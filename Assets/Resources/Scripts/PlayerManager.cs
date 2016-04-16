@@ -78,6 +78,7 @@ public class PlayerManager : MonoBehaviour {
 			Destroy (col.gameObject);
 			invulnerable = true;
 			_blinkOn ();
+			Camera.main.GetComponent<ShakeCamera> ().DoShake (0.3f, 0.02f);
 			Invoke ("ResetVulnerability", 1.5f);
 		}
 	}

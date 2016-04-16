@@ -15,6 +15,7 @@ public class GunManager : MonoBehaviour {
 	private float vertical;
 
 	private int shootDir;
+	private int doubleShootDir;
 	public  int powerupState;
 	private int singleShootSpeed;
 	private Vector2 vectorShootSpeed;
@@ -42,7 +43,7 @@ public class GunManager : MonoBehaviour {
 			lastUpdate = Time.time;
 		}
 		checkCountdownBar ();
-		powerupTxt.text = "Powerup State: " + powerupState;
+		powerupTxt.text = "<color=#ffa500ff>Powerup State:</color> " + powerupState;
 		if (Input.GetKeyDown (KeyCode.Alpha1)) powerupState = 1;
 		if (Input.GetKeyDown (KeyCode.Alpha2)) powerupState = 2;
 		if (Input.GetKeyDown (KeyCode.Alpha3)) powerupState = 3;
@@ -74,6 +75,7 @@ public class GunManager : MonoBehaviour {
 					SingleShoot (getShootDir());
 					break;
 				case 2:
+					doubleShootDir = getShootDir ();
 					DoubleShoot ();
 					break;
 				case 3:
@@ -108,11 +110,11 @@ public class GunManager : MonoBehaviour {
 	}
 
 	void InvokableSingleShoot() {
-		SingleShoot (getShootDir ());
+		SingleShoot (doubleShootDir);
 	}
 
 	void DoubleShoot() {
-		SingleShoot (getShootDir ());
+		SingleShoot (doubleShootDir);
 		Invoke ("InvokableSingleShoot", 0.3f);
 	}
 
