@@ -42,7 +42,6 @@ public class PlayerManager : MonoBehaviour {
 		}
 		if (moveY < -0.1f && canControl) {
 			rb.velocity = new Vector2 (rb.velocity.x, moveY * maxWalkSpeed);
-			//angle = 0;
 		}
 		if (moveY == 0 && canControl) {
 			rb.velocity = new Vector2 (rb.velocity.x, 0);
