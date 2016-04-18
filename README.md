@@ -1,5 +1,7 @@
-# "The Fabulous Chicken Builder Adventures"
+# "Chicken Out!"
 A game concepct for the Ludum Dare Game Jam #35 - April 2016
+
+![Title screen](http://i.imgur.com/2D8sc0O.png)
 
 <hr>
 
