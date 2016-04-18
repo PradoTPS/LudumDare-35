@@ -14,9 +14,7 @@ public class ShakeCamera : MonoBehaviour
 	{
 		Shaking = false;    
 	}
-
-
-	// Update is called once per frame
+		
 	void Update () 
 	{
 		if(ShakeIntensity > 0)
@@ -31,7 +29,8 @@ public class ShakeCamera : MonoBehaviour
 		}
 		else if (Shaking)
 		{
-			Shaking = false;    
+			Shaking = false;
+			transform.rotation = Quaternion.identity;
 		}
 	}
 
