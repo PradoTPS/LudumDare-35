@@ -9,11 +9,19 @@ public class PlayerManager : MonoBehaviour {
 	public float maxWalkSpeed;
 	public bool canControl = true;
 	public bool attacking;
+	public AudioClip chicken;
 
+	private AudioSource audioSource;
 	private bool invulnerable;
 
 	Animator anim;
 	Rigidbody2D rb;
+
+	void Awake () {
+		audioSource = GetComponent<AudioSource>();
+		audioSource.volume = 0.0f;
+		audioSource.clip = chicken;
+	}
 
 	void Start() {
 		anim = GetComponent<Animator> ();
@@ -78,6 +86,11 @@ public class PlayerManager : MonoBehaviour {
 		if (col.tag == "Bullet" + (Kcontroller.ToString().ToLower() == "first" ? 2 : 1) && !invulnerable) {
 			int pwrstt = this.GetComponentInChildren<GunManager> ().powerupState;
 			this.GetComponentInChildren<GunManager> ().powerupState = pwrstt <= 1 ? 0 : pwrstt - 1;
+
+			audioSource.volume = 0.5f;
+			audioSource.loop = false;
+			audioSource.Play();
+
 			if (this.GetComponentInChildren<GunManager> ().powerupState == 0) {
 				Invoke ("ResetVulnerability", 1.5f);
 				this.gameObject.GetComponent<PlayerManager> ().canControl = false;

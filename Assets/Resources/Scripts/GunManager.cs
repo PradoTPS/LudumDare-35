@@ -27,7 +27,17 @@ public class GunManager : MonoBehaviour {
 	public GameObject gun;
 	public GameObject player;
 
+	public AudioClip shoot;
+
+	private AudioSource audioSource;
+
 	int getShootDir () {  return shootDir;  }
+
+	void Awake () {
+		audioSource = GetComponent<AudioSource>();
+		audioSource.volume = 0.0f;
+		audioSource.clip = shoot;
+	}
 
 	void Start() {
 		powerupState = 3;
@@ -66,8 +76,11 @@ public class GunManager : MonoBehaviour {
 	}
 
 	void Shoot(int powerup) {
-		if (KCI.GetButtonDown (KeyboardButton.Action, Kcontroller) && countdown == 0) {
+		if (KCI.GetButtonDown (KeyboardButton.Action, Kcontroller) && countdown == 0 && powerup > 0) {
 			countdown = 10;
+			audioSource.volume = 0.5f;
+			audioSource.loop = false;
+			audioSource.Play();
 			switch (powerup) {
 				case 1:
 					SingleShoot (getShootDir());
@@ -78,9 +91,6 @@ public class GunManager : MonoBehaviour {
 					break;
 				case 3:
 					FourDirShoot ();
-					break;
-				case 4:
-					//TODO
 					break;
 			}
 		}
