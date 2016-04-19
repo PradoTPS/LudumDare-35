@@ -14,6 +14,8 @@ public class GunManager : MonoBehaviour {
 	private float horizontal;
 	private float vertical;
 
+	public string textColor;
+
 	private int shootDir;
 	private int doubleShootDir;
 	public  int powerupState;
@@ -28,7 +30,7 @@ public class GunManager : MonoBehaviour {
 	int getShootDir () {  return shootDir;  }
 
 	void Start() {
-		powerupState = 1;
+		powerupState = 3;
 		singleShoot = Resources.Load ("Prefabs/SingleShoot") as GameObject;
 		singleShootSpeed = 10;
 		vectorShootSpeed = new Vector2 (0, 0);
@@ -43,11 +45,7 @@ public class GunManager : MonoBehaviour {
 			lastUpdate = Time.time;
 		}
 		checkCountdownBar ();
-		powerupTxt.text = "<color=#ffa500ff>Powerup State:</color> " + powerupState;
-		if (Input.GetKeyDown (KeyCode.Alpha1)) powerupState = 1;
-		if (Input.GetKeyDown (KeyCode.Alpha2)) powerupState = 2;
-		if (Input.GetKeyDown (KeyCode.Alpha3)) powerupState = 3;
-		if (Input.GetKeyDown (KeyCode.Alpha4)) powerupState = 4;
+		powerupTxt.text = "<color=#" + textColor + ">Powerup State:</color> " + powerupState;
 	}
 
 	void Pivot() {

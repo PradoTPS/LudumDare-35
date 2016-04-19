@@ -9,21 +9,22 @@ public class AnimationManager : MonoBehaviour {
 	public GameObject pivot;
 	private bool idle;
 	private float lastPivotDir;
+	private string dir;
 
 	void Update () {
-	
+
 		float moveX = KCI.GetAxisRaw (KeyboardAxis.Horizontal, Kcontroller);
 		float moveY = KCI.GetAxisRaw (KeyboardAxis.Vertical, Kcontroller);
 		float pivotDir = pivot.transform.rotation.eulerAngles.z;
-		string dir = (-1 < pivotDir && pivotDir < 1) ? "right" : (179 < pivotDir && pivotDir < 181) ? "left" : "left";
+		dir = (-1 < pivotDir && pivotDir < 1) ? "right" : (179 < pivotDir && pivotDir < 181) ? "left" : dir;
 
 		print (dir);
 
 		idle = (moveX == 0 && moveY == 0);
 
 		if (idle) {
-			if (pivotDir > 0) {
-				GetComponent<Animator> ().Play ("IdleBack");			
+			if (dir == "left") {
+				GetComponent<Animator> ().Play ("IdleBack");
 			} else {
 				GetComponent<Animator> ().Play ("Idle");
 			}
