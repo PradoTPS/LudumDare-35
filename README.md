@@ -1,11 +1,13 @@
 # "Chicken Out!"
 A game concepct for the Ludum Dare Game Jam #35 - April 2016
 
+You can check out and download the game [over here](http://avellar.ml/chickenout)!
+
 ![Title screen](http://i.imgur.com/2D8sc0O.png)
 
 <hr>
 
-A work in progress Unity application by:
+A Unity application by:
 
 <a title="Filipe Fernandes" target="_blank" href="http://github.com/FilipeMFernandes">
     <img width="50" height="50" src="https://avatars0.githubusercontent.com/u/11331746?s=50"/>
